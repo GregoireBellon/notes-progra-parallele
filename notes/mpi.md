@@ -114,6 +114,17 @@ if(cpu_rank == 0 ){
 }
 ```
 
+Alternativement, on peut partager la donnéee du root aux fils avec Bcast : 
+
+```cpp
+MPI::COMM_WORLD.Bcast(
+    void* data, // données à envoyer du root, ou a recevoir des fils.
+    int count, // nombre d'éléments
+    MPI_Datatype datatype, // type
+    int root, // id du processeur root (généralement 0)
+);
+```
+
 ## Exemples : 
 - [Send et Recv](../exercices/MPI/MPI_Syracuse.cpp)
 - [Recherche à l'intérieur d'un tableau](../exercices/MPI/MPI_Recherche_tableau.cpp)
